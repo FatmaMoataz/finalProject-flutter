@@ -38,9 +38,9 @@ class _QuoteScreenState extends State<QuoteScreen> {
           child: Column(
               children: [
                 SizedBox(height: 200,),
-                Text(snapshot.data![index].quote),
-                Text(snapshot.data![index].author),
-                Text(snapshot.data![index].category),
+                Text(snapshot.data![index].quote,  style: const TextStyle(color: Colors.white),),
+                Text(snapshot.data![index].author,  style: const TextStyle(color: Colors.white),),
+                Text(snapshot.data![index].category,  style: const TextStyle(color: Colors.white),),
               ],
             ),
         ),

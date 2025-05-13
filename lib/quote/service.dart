@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:task4/quote/quote.dart';
 import 'package:http/http.dart' as http;
 

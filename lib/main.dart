@@ -4,10 +4,13 @@ import 'package:task4/dashboard/dashboard_screen.dart';
 import 'package:task4/dashboard/navbar.dart';
 import 'package:task4/favorite/favorite_model.dart';
 import 'package:task4/profile/user_model.dart';
+import 'package:task4/splash/splash_screen.dart';
 import 'details/details_screen/details_page.dart';
 import 'package:provider/provider.dart';
 void main() {
+
   runApp(
+    
 
 MultiProvider(
   providers: [
@@ -29,6 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+            debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -49,7 +53,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: Navbar(),
+      home: SplashScreen(),
     );
   }
 }
