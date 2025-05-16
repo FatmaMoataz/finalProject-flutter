@@ -1,12 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:task4/profile/user_model.dart';
-import '../profile_widget/options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
+import 'package:task4/authentication/login/login_screen.dart';
+import '../profile_widget/options.dart';
+import 'package:task4/profile/user_model.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({super.key});
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -21,12 +23,22 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  Future<void> _logout(BuildContext context) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.grey[900] : Colors.white,
       appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.blue,
+        backgroundColor: isDarkMode ? Colors.black : Colors.teal,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -51,15 +63,22 @@ class _ProfilePageState extends State<ProfilePage> {
                   activeTrackColor: Colors.white,
                   inactiveTrackColor: Colors.grey.shade300,
                 ),
+                IconButton(
+                  icon: Icon(
+                    Icons.logout,
+                    color: isDarkMode ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () => _logout(context),
+                  tooltip: 'Logout',
+                ),
               ],
             ),
           ],
         ),
       ),
-
       body: Column(
         children: [
-          SizedBox(height: 10,),
+          const SizedBox(height: 10),
           Center(
             child: Consumer<UserModel>(
               builder: (context, userModel, child) {
@@ -69,20 +88,21 @@ class _ProfilePageState extends State<ProfilePage> {
                     CircleAvatar(
                       backgroundColor: Colors.grey.shade500,
                       radius: 100,
-                      child: userModel.user?.image == null
-                          ? const Icon(
-                              Icons.person,
-                              size: 200,
-                              color: Colors.white38,
-                            )
-                          : ClipOval(
-                              child: Image.file(
-                                userModel.user!.image!,
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.cover,
+                      child:
+                          userModel.user?.image == null
+                              ? const Icon(
+                                Icons.person,
+                                size: 200,
+                                color: Colors.white38,
+                              )
+                              : ClipOval(
+                                child: Image.file(
+                                  userModel.user!.image!,
+                                  height: 200,
+                                  width: 200,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
                     ),
                     CircleAvatar(
                       backgroundColor: Colors.black,
@@ -96,49 +116,56 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: () {
                           showModalBottomSheet(
                             context: context,
-                            builder: (context) => Container(
-                              height: 150,
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    'Profile',
-                                    style: TextStyle(fontSize: 25),
-                                  ),
-                                  const Divider(),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            builder:
+                                (context) => SizedBox(
+                                  height: 150,
+                                  child: Column(
                                     children: [
-                                      Options(
-                                        onPressed: () {
-                                          userModel.imageSelector(ImageSource.camera);
-                                          Navigator.pop(context);
-                                        },
-                                        title: 'Camera',
-                                        icon: Icons.camera_alt,
+                                      const Text(
+                                        'Profile',
+                                        style: TextStyle(fontSize: 25),
                                       ),
-                                      Options(
-                                        onPressed: () {
-                                          userModel.imageSelector(ImageSource.gallery);
-                                          Navigator.pop(context);
-                                        },
-                                        title: 'Gallery',
-                                        icon: Icons.image,
+                                      const Divider(),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Options(
+                                            onPressed: () {
+                                              userModel.imageSelector(
+                                                ImageSource.camera,
+                                              );
+                                              Navigator.pop(context);
+                                            },
+                                            title: 'Camera',
+                                            icon: Icons.camera_alt,
+                                          ),
+                                          Options(
+                                            onPressed: () {
+                                              userModel.imageSelector(
+                                                ImageSource.gallery,
+                                              );
+                                              Navigator.pop(context);
+                                            },
+                                            title: 'Gallery',
+                                            icon: Icons.image,
+                                          ),
+                                          if (userModel.user?.image != null)
+                                            Options(
+                                              selectedImage:
+                                                  userModel.user?.image,
+                                              onPressed: () {
+                                                userModel.removeImage();
+                                                Navigator.pop(context);
+                                              },
+                                              title: 'Delete',
+                                              icon: Icons.delete,
+                                            ),
+                                        ],
                                       ),
-                                      if (userModel.user?.image != null)
-                                        Options(
-                                          selectedImage: userModel.user?.image,
-                                          onPressed: () {
-                                            userModel.removeImage();
-                                            Navigator.pop(context);
-                                          },
-                                          title: 'Delete',
-                                          icon: Icons.delete,
-                                        ),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ),
+                                ),
                           );
                         },
                       ),

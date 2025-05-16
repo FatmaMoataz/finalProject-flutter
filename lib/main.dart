@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:task4/add_item/item_model.dart';
-import 'package:task4/dashboard/dashboard_screen.dart';
+import 'package:task4/authentication/login/login_model.dart';
+import 'package:task4/authentication/login/login_screen.dart';
+import 'package:task4/authentication/signup/signup_model.dart';
 import 'package:task4/dashboard/navbar.dart';
 import 'package:task4/favorite/favorite_model.dart';
 import 'package:task4/profile/user_model.dart';
+import 'package:task4/authentication/signup/signup_screen.dart';
 import 'package:task4/splash/splash_screen.dart';
-import 'details/details_screen/details_page.dart';
 import 'package:provider/provider.dart';
 void main() {
 
@@ -17,6 +19,8 @@ MultiProvider(
     ChangeNotifierProvider(create: (context) => UserModel()),
     ChangeNotifierProvider(create: (context) => ItemModel()),
     ChangeNotifierProvider(create: (context) => FavoriteModel()),
+    ChangeNotifierProvider(create: (context) => LoginModel()),
+    ChangeNotifierProvider(create: (context) => SignupModel()),
   ],
   child: const MyApp(),
 )
@@ -32,6 +36,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        routes: {
+         '/signup': (context) => const SignupScreen(),
+         '/login': (context) => const LoginScreen(),
+          '/navbar': (context) => const Navbar(),
+  },
             debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
