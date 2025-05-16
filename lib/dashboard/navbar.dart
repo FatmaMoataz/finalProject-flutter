@@ -30,7 +30,7 @@ int _selectedIndex = 0;
         },
         destinations: [
         NavigationDestination(icon: Icon(Icons.dashboard), label: "dashboard"),
-             NavigationDestination(icon: Icon(Icons.format_quote), label: "quote"),
+         NavigationDestination(icon: Icon(Icons.format_quote), label: "quote"),
         NavigationDestination(icon: Icon(Icons.favorite), label: "favorite"),
         NavigationDestination(icon: Icon(Icons.person), label: "person"),
       ]),

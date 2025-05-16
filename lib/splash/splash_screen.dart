@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:task4/add_item/add_item_screen.dart';
-import 'package:task4/dashboard/dashboard_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,51 +8,55 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const AddItemScreen()));
-    });
+    _checkLoginStatus();
+  }
+
+  Future<void> _checkLoginStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    final bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    if (isLoggedIn) {
+      Navigator.pushReplacementNamed(context, '/navbar');
+    } else {
+      Navigator.pushReplacementNamed(context, '/login');
+    }
   }
 
   @override
-  void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.purple],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          ),
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.teal, Colors.blue],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-        child: const Column(
+      ),
+      child: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(Icons.edit, size: 80, color: Colors.white),
+          children: const [
+            Icon(Icons.flash_on, size: 100, color: Colors.white),
             SizedBox(height: 20),
             Text(
-              'Flutter Tips',
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                color: Colors.white,
-                fontSize: 32,
-              ),
+              'Welcome to MyApp',
+              style: TextStyle(fontSize: 24, color: Colors.white),
             ),
+            SizedBox(height: 10),
+            CircularProgressIndicator(color: Colors.white),
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
