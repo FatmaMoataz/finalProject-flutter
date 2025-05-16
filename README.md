@@ -60,7 +60,7 @@ flutter run
 ```
 
 ## 👥 Contributors  
-- **Fatma Moataz Mahmoud** - Developer (ID: 230461568)  
-- **Jumana Adel Abdelwanees** - Developer (ID: 230473749)  
-- **Khaled Mohamed Aly** - Developer (ID: 230469424)  
-- **Adham Ihab Shaaban** - Developer (ID: 230540853)  
+- **Fatma Moataz Mahmoud** (230461568) - **Role:** Integrated a toggle switch in profile screen using ```setState``` and added the splash screen
+- **Jumana Adel Abdelwanees** (230473749) - **Role:** Worked on the profile screen, allowing users to edit their information  
+- **Khaled Mohamed Aly** (230469424) - **Role:** Handled the logout logic and managed the routes in the main file
+- **Adham Ihab Shaaban** (230540853) -  **Role:** Implemented the registration UI and logic  
