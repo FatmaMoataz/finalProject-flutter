@@ -38,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.grey[900] : Colors.white,
       appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.teal,
+        backgroundColor: isDarkMode ? Colors.black : Colors.blue,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

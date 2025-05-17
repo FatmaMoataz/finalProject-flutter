@@ -35,7 +35,7 @@ Widget build(BuildContext context) {
     body: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.teal, Colors.blue],
+          colors: [Colors.blueAccent, Colors.lightBlueAccent],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -44,7 +44,7 @@ Widget build(BuildContext context) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            Icon(Icons.flash_on, size: 100, color: Colors.white),
+            Icon(Icons.keyboard_command_key_outlined, size: 100, color: Colors.white),
             SizedBox(height: 20),
             Text(
               'Welcome to MyApp',
