@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '/authentication/service.dart';
+import 'package:task4/authentication/service.dart';
 
-class LoginModel extends ChangeNotifier { 
-
+class LoginModel with ChangeNotifier {
   String _email = '';
   String _password = '';
   bool _isLoading = false;
@@ -23,29 +22,20 @@ class LoginModel extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-Future<void> login() async {
-  _isLoading = true;
-  notifyListeners();
-
-  bool result = await LocalAuthService().login(_email, _password);
-
-  _isLoading = false;
-  if (result) {
-    _isLoggedIn = true;
-    print('Login successful');
-  } else {
-    _isLoggedIn = false;
-    print('Invalid email or password');
-  }
-  notifyListeners();
-}
-
-
-  Future<void> logout() async {
-    await LocalAuthService().clearUser();
-    _isLoggedIn = false;
+  Future<void> login() async {
+    _isLoading = true;
     notifyListeners();
+
+    bool success = await LocalAuthService().login(_email, _password);
+
+    _isLoading = false;
+    _isLoggedIn = success;
+    notifyListeners();
+
+    if (success) {
+      print('Login successful');
+    } else {
+      print('Login failed');
+    }
   }
 }

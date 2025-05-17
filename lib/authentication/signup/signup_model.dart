@@ -34,6 +34,7 @@ class SignupModel with ChangeNotifier {
     notifyListeners();
 
     bool success = await LocalAuthService().saveUser(_name, _email, _password);
+
     _isLoading = false;
     _isLoggedIn = success;
     notifyListeners();
