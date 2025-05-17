@@ -1,19 +1,66 @@
-# fatma moataz mahmoud - 230461568
-# Jumana Adel Abdelwanees - 230473749
-# Khaled Mohamed Aly - 230469424
-# Adham Ihab Shaaban - 230540853
+# Final Project - Mobile Application 🚀 
 
-[UI](https://github.com/user-attachments/assets/42d584aa-3830-4e10-9cea-672c956107d1)
+### 📱 Project Description  
+This project is a complete **Flutter mobile application** developed using the **MVVM architecture**.  
+The app incorporates:  
+- State management using the **Provider** package  
+- Persistent storage using **SharedPreferences**  
+- User authentication  
+- API integration  
+- Theme switching (Dark/Light mode)  
+- Basic **CRUD operations**  
 
-## Getting Started
+## 🌟 Features  
 
-This project is a starting point for a Flutter application.
+### User Authentication:  
+- **Sign Up:** Register with name, email, and password (validated).  
+- **Login:** Sign in with saved login status (using SharedPreferences).  
 
-A few resources to get you started if this is your first Flutter project:
+### Home Screen:  
+- Displays items fetched from a public API using the **http** package.  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Dashboard Screen:  
+- Shows the items added by the user.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Add Items Screen:  
+- Allows users to add custom items (name, description, images).  
+- State managed using **Provider**.  
+
+### Details Screen:  
+- Displays detailed information about a selected item.  
+
+### Favorite Screen:  
+- Shows items marked as favorites by the user.  
+- Toggle favorite status using **Provider**.  
+
+### Profile Screen:  
+- Displays user information and allows editing.  
+- **Logout** button to clear SharedPreferences.  
+- **Dark/Light mode** switcher stored in SharedPreferences.  
+
+## 🛠️ Technical Stack  
+- **Framework:** Flutter  
+- **State Management:** Provider  
+- **Architecture:** MVVM  
+- **Local Storage:** SharedPreferences  
+- **API Calls:** http package  
+- **Form Handling:** Form and TextFormField with validation  
+
+## 🎥 Project Video  
+A demonstration video of the UI can be found [here](link-to-video).  
+
+## 🚀 Installation  
+
+### Clone the repository:  
+```bash
+git clone https://github.com/FatmaMoataz/finalProject-flutter.git
+cd finalProject-flutter
+flutter pub get
+flutter run
+```
+
+## 👥 Contributors  
+- **Fatma Moataz Mahmoud** (230461568) - **Role:** Integrated a toggle switch in profile screen using ```setState``` and added the splash screen
+- **Jumana Adel Abdelwanees** (230473749) - **Role:** Worked on the profile screen, allowing users to edit their information  
+- **Khaled Mohamed Aly** (230469424) - **Role:** Handled the logout logic and managed the routes in the main file
+- **Adham Ihab Shaaban** (230540853) -  **Role:** Implemented the registration UI and logic  
