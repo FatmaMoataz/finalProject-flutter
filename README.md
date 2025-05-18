@@ -51,7 +51,7 @@ The app incorporates:
 - Clean and structured code following **MVVM** and **Provider** best practices  
 
 ## 🎥 Project Video  
-A demonstration video of the UI can be found [here](link-to-video).  
+A demonstration video of the UI can be found [here](https://drive.google.com/file/d/1mfLjoY9MBNZ6LDW3Y1V5b8-Ni32HwVMH/view?usp=sharing).  
 
 ## 🚀 Installation  
 
