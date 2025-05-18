@@ -44,7 +44,11 @@ The app incorporates:
 - **Architecture:** MVVM  
 - **Local Storage:** SharedPreferences  
 - **API Calls:** http package  
-- **Form Handling:** Form and TextFormField with validation  
+- **Form Handling:** Form and TextFormField with validation
+  
+## 💡 Bonus Features
+- **Dark/Light Mode** with persistence  
+- Clean and structured code following **MVVM** and **Provider** best practices  
 
 ## 🎥 Project Video  
 A demonstration video of the UI can be found [here](link-to-video).  
@@ -60,7 +64,16 @@ flutter run
 ```
 
 ## 👥 Contributors  
-- **Fatma Moataz Mahmoud** (230461568) - **Role:** Integrated a toggle switch in profile screen using ```setState``` and added the splash screen
-- **Jumana Adel Abdelwanees** (230473749) - **Role:** Worked on the profile screen, allowing users to edit their information  
-- **Khaled Mohamed Aly** (230469424) - **Role:** Handled the logout logic and managed the routes in the main file
-- **Adham Ihab Shaaban** (230540853) -  **Role:** Implemented the registration UI and logic  
+
+- [Fatma Moataz Mahmoud](https://github.com/FatmaMoataz) (230461568)  
+  - **Role:** Integrated a toggle switch in the profile screen using `setState`, added the splash screen, and developed the registration service using **SharedPreferences**.  
+
+- [Jumana Adel Abdelwanees](https://github.com/jumanaadell5) (230473749)  
+  - **Role:** Developed the profile screen, allowing users to edit their information.  
+  - **Additional Contributions:** Implemented the **Dark/Light mode** feature and created the **About Page**.  
+
+- [Khaled Mohamed Aly](https://github.com/khaledalawagy) (230469424)  
+  - **Role:** Managed the logout functionality and handled routing within the main file.  
+
+- [Adham Ihab Shaaban](https://github.com/AdhamGhalwash) (230540853)  
+  - **Role:** Implemented the registration UI and validation logic for input handling.  
