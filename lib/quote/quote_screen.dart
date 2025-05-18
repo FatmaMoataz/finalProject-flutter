@@ -25,7 +25,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
         decoration: BoxDecoration(  
           image: DecorationImage(
              fit: BoxFit.cover,
-            image: AssetImage('assets/quote_bg.png'))
+            image: AssetImage('assets/wallpaper.jpg'))
         ),
         child: FutureBuilder(future: future, builder: (context, snapshot) {
           if(snapshot.hasData) {

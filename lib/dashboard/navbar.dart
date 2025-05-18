@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task4/about_us/about_us.dart';
 import 'package:task4/dashboard/dashboard_screen.dart';
 import 'package:task4/favorite/favorite_screen.dart';
 import 'package:task4/profile/profile_page/profile_page.dart';
@@ -20,6 +21,7 @@ int _selectedIndex = 0;
         DashboardScreen(),
         QuoteScreen(),
         FavoriteScreen(),
+        AboutUS(),
         ProfilePage()
       ][_selectedIndex],
       bottomNavigationBar: NavigationBar(
@@ -32,7 +34,9 @@ int _selectedIndex = 0;
         NavigationDestination(icon: Icon(Icons.dashboard), label: "dashboard"),
          NavigationDestination(icon: Icon(Icons.format_quote), label: "quote"),
         NavigationDestination(icon: Icon(Icons.favorite), label: "favorite"),
+          NavigationDestination(icon: Icon(Icons.question_mark), label: "About us "),
         NavigationDestination(icon: Icon(Icons.person), label: "person"),
+
       ]),
     );
   }

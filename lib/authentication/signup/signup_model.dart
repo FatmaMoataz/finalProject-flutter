@@ -38,11 +38,5 @@ class SignupModel with ChangeNotifier {
     _isLoading = false;
     _isLoggedIn = success;
     notifyListeners();
-
-    if (success) {
-      print('Signup successful');
-    } else {
-      print('Signup failed');
-    }
   }
 }

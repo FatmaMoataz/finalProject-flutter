@@ -1,29 +1,31 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:task4/add_item/item.dart';
+import '../add_item/item.dart';
 
 class FavoriteModel extends ChangeNotifier {
-final List<Item> _fav = [];
-List<Item> get fav => _fav;
+  final List<Item> _fav = [];
+  List<Item> get fav => _fav;
 
-add(Item item) {
-  if(!_fav.contains(item)) {
-_fav.add(item);
+  void add(Item item) {
+    if (!_fav.contains(item)) {
+      item.favorite = true;  
+      _fav.add(item);
+      notifyListeners();
+    }
   }
-notifyListeners();
-}
 
-remove(Item item) {
-    if(_fav.contains(item)) {
-_fav.remove(item);
+  void remove(Item item) {
+    if (_fav.contains(item)) {
+      item.favorite = false; 
+      _fav.remove(item);
+      notifyListeners();
+    }
   }
-notifyListeners();
-}
 
-isFavorite(Item item) {
-  item.favorite = !item.favorite;
-  item.favorite? add(item) : remove(item);
-  notifyListeners();
-}
-
+  void isFavorite(Item item) {
+    if (item.favorite) {
+      remove(item);
+    } else {
+      add(item);
+    }
+  }
 }

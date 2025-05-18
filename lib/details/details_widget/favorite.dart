@@ -9,17 +9,25 @@ class FavoriteWidget extends StatelessWidget {
  final int index;
   @override
   Widget build(BuildContext context) {
+
     return Consumer<ItemModel>(
+
       builder: (context, item, child) {
-        final fav = Provider.of<FavoriteModel>(context,listen:true);
+        final fav=Provider.of<FavoriteModel>(context,listen: false);
         final currentItem = item.items[index];
+
+
         return
-       IconButton(
-        onPressed: () {
-fav.isFavorite(currentItem);
-        },
-        icon: Icon(Icons.favorite, color: item.items[index].favorite ? Colors.red : Colors.grey),
-      );
+          IconButton(
+            onPressed: () {
+              fav.isFavorite(currentItem);
+            },
+            icon: Icon(
+              Icons.favorite,
+              color: currentItem.favorite ? Colors.red : Colors.grey,
+            ),
+          );
+
       }
 
     );

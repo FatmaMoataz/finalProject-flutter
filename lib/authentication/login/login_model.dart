@@ -31,11 +31,5 @@ class LoginModel with ChangeNotifier {
     _isLoading = false;
     _isLoggedIn = success;
     notifyListeners();
-
-    if (success) {
-      print('Login successful');
-    } else {
-      print('Login failed');
-    }
   }
 }

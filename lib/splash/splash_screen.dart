@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task4/dashboard/navbar.dart';  
+import 'package:task4/authentication/login/login_screen.dart';  
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,41 +24,46 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 2));
 
     if (isLoggedIn) {
-      Navigator.pushReplacementNamed(context, '/navbar');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) =>Navbar()),
+      );
     } else {
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
     }
   }
 
   @override
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.blueAccent, Colors.lightBlueAccent],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blueAccent, Colors.lightBlueAccent],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(Icons.keyboard_command_key_outlined, size: 100, color: Colors.white),
+              SizedBox(height: 20),
+              Text(
+                'Welcome to MyApp',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+              SizedBox(height: 10),
+              CircularProgressIndicator(color: Colors.white),
+            ],
+          ),
         ),
       ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.keyboard_command_key_outlined, size: 100, color: Colors.white),
-            SizedBox(height: 20),
-            Text(
-              'Welcome to MyApp',
-              style: TextStyle(fontSize: 24, color: Colors.white),
-            ),
-            SizedBox(height: 10),
-            CircularProgressIndicator(color: Colors.white),
-          ],
-        ),
-      ),
-    ),
-  );
+    );
+  }
 }
 
-}
